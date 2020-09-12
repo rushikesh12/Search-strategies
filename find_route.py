@@ -11,11 +11,10 @@ def read_file(filename):
     for line in file:
         # Here we strip the "\n" from the back and splits the strings based on whitespace
         fields = line.rstrip('\n').split(" ")
+        if fields == ['END', 'OF', 'INPUT']:
+            return list
         list.append(fields)
-    # Here we use the delimiter to remove it from the list and also any additional lines up to 5
-    for i in range(5):
-        if list[-1] == ['END', 'OF', 'INPUT']  or  list [-1] == ['']:
-            del list[-1]
+    
     return list
 
 # This is the main function for uninformed problem
@@ -245,7 +244,7 @@ elif number_of_arguments == 5:
     heuristic = read_file(str(arguments[4]))
     informed_solution(cost_data, origin, destination, heuristic)
 
-elif number_of_arguments > 5:
+else:
     print("Wrong Input arguments!\nTry again.")
 
 
